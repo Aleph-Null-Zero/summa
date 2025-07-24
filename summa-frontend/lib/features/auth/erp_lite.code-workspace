@@ -1,0 +1,19 @@
+{
+  "folders": [
+    {
+      "name": "Frontend (Flutter)",
+      "path": "front"
+    },
+    {
+      "name": "Backend (.NET)",
+      "path": "back"
+    },
+    {
+      "name": "Workspace",
+      "path": ".",
+    }
+  ],
+  "settings": {
+    // Configuraciones generales del workspace (opcional)
+  }
+}

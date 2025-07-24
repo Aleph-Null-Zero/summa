@@ -1,0 +1,31 @@
+{
+  "folders": [
+    {
+      "name": "Frontend",
+      "path": "summa-frontend"
+    },
+    {
+      "name": "Backend",
+      "path": "summa-backend"
+    },
+    {
+      "name": "Workspace",
+      "path": "."
+    },
+  ],
+  "settings": {
+    "files.exclude": {
+      // Exclude from Frontend
+      ".dart_tool": true,
+      "build": true,
+      ".metadata": true,
+      "windows": true,
+      ".flutter-plugins-dependencies": true,
+      "pubspec.lock": true,
+      
+      // Exclude from Workspace
+      "summa-backend": true,
+      "summa-frontend": true,
+    }
+  },
+}
