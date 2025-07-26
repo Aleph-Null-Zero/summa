@@ -1,16 +1,16 @@
 {
   "folders": [
     {
+      "name": "Workspace",
+      "path": "."
+    },
+    {
       "name": "Frontend",
       "path": "summa-frontend"
     },
     {
       "name": "Backend",
       "path": "summa-backend"
-    },
-    {
-      "name": "Workspace",
-      "path": "."
     },
   ],
   "settings": {
@@ -22,10 +22,38 @@
       "windows": true,
       ".flutter-plugins-dependencies": true,
       "pubspec.lock": true,
-      
+      // Exclude from Backend
+      "bin/": true,
+      "obj/": true,
       // Exclude from Workspace
       "summa-backend": true,
       "summa-frontend": true,
     }
   },
+    "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Launch Backend",
+        "type": "coreclr",
+        "request": "launch",
+        "program": "${workspaceFolder:Workspace}/summa-backend/bin/Debug/net9.0/summa_backend.dll",
+        "cwd": "${workspaceFolder:Workspace}/summa-backend"
+      },
+      {
+        "name": "Launch Frontend",
+        "type": "dart",
+        "request": "launch",
+        "cwd": "${workspaceFolder:Workspace}/summa-frontend",
+        "program": "${workspaceFolder:Workspace}/summa-frontend/lib/main.dart",
+        "args": ["-d", "chrome"]
+      }
+    ],
+    "compounds": [
+      {
+        "name": "Launch Backend + Frontend",
+        "configurations": ["Launch Backend", "Launch Frontend"]
+      }
+    ]
+  }
 }
