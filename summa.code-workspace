@@ -13,6 +13,23 @@
       "path": "summa-backend"
     },
   ],
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "build debug API",
+        "type": "process",
+        "command": "dotnet",
+        "args": [
+          "build",
+          "${workspaceFolder:Workspace}/summa-backend/summa-backend.csproj",
+          "--configuration",
+          "Debug"
+        ],
+        "problemMatcher": "$msCompile"
+      }
+    ]
+  },
   "settings": {
     "files.exclude": {
       // Exclude from Frontend
@@ -30,14 +47,15 @@
       "summa-frontend": true,
     }
   },
-    "launch": {
+  "launch": {
     "version": "0.2.0",
     "configurations": [
       {
         "name": "Launch Backend",
         "type": "coreclr",
         "request": "launch",
-        "program": "${workspaceFolder:Workspace}/summa-backend/bin/Debug/net9.0/summa_backend.dll",
+        "preLaunchTask": "build debug API",
+        "program": "${workspaceFolder:Workspace}/summa-backend/bin/Debug/net9.0/summa-backend.dll",
         "cwd": "${workspaceFolder:Workspace}/summa-backend"
       },
       {
@@ -46,13 +64,19 @@
         "request": "launch",
         "cwd": "${workspaceFolder:Workspace}/summa-frontend",
         "program": "${workspaceFolder:Workspace}/summa-frontend/lib/main.dart",
-        "args": ["-d", "chrome"]
+        "args": [
+          "-d",
+          "chrome"
+        ]
       }
     ],
     "compounds": [
       {
         "name": "Launch Backend + Frontend",
-        "configurations": ["Launch Backend", "Launch Frontend"]
+        "configurations": [
+          "Launch Backend",
+          "Launch Frontend"
+        ]
       }
     ]
   }
